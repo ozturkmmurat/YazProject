@@ -28,6 +28,7 @@ export class EducationService {
   }
 
   update(education : Education):Observable<ResponseModel>{
+    console.log("Servise gelen", education)
     let newPath = environment.apiUrl + "educations/update"
     return this.httpClient.post<ResponseModel>(newPath, education)
   }

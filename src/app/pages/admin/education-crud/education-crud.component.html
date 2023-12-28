@@ -1,25 +1,32 @@
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Başlık</th>
-          <th scope="col">Eğitmen</th>
-          <th scope="col">Kontejan</th>
-          <th scope="col">Günlük Ücret</th>
-          <th scope="col">Tarih</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let education of educations">
-          <th scope="row">{{education.educationId}}</th>
-          <td>{{education.educationTitle}}</td>
-          <td>{{education.educatorFirstName + " " + education.educatorLastName}}</td>
-          <td>{{education.quota}}</td>
-          <td>{{education.dailyPrice}}</td>
-          <td>{{education.startDate | date:"MM/dd/yy"}} - {{education.endDate | date:"MM/dd/yy"}}</td>
-        </tr>
-      </tbody>
-  </table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Başlık</th>
+      <th scope="col">Eğitmen</th>
+      <th scope="col">Kontejan</th>
+      <th scope="col">Günlük Ücret</th>
+      <th scope="col">Tarih</th>
+      <th scope="col">Güncelle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let education of educations">
+      <th scope="row">{{ education.educationId }}</th>
+      <td>{{ education.educationTitle }}</td>
+      <td>{{ education.educatorFirstName + " " + education.educatorLastName }}</td>
+      <td>{{ education.quota }}</td>
+      <td>{{ education.dailyPrice }}</td>
+      <td>{{ education.startDate | date:"MM/dd/yy" }} - {{ education.endDate | date:"MM/dd/yy" }}</td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="edit(education)">Güncelle</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="delete(education)">Sil</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
   <button type="button" class="btn btn-success" (click)="add()">Eğitim Ekle</button>
 
@@ -36,8 +43,10 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <app-education-add
+    <app-education-add *ngIf="!modalStatus"
     ></app-education-add>
+    <app-education-update *ngIf="modalStatus" [education]="education">
+    </app-education-update>
   </ng-template>
 
 

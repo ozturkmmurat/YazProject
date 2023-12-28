@@ -42,12 +42,6 @@ export class EducationAddComponent {
     })
   }
 
-  getAllEducation(){
-    this.educationService.getAll().subscribe(response =>{
-      this.educations = response.data
-    })
-  }
-
   addForm(){
     this._addForm = this.formBuilder.group({
       educatorId:[0, Validators.required],
@@ -71,8 +65,7 @@ export class EducationAddComponent {
         })
       )
       .subscribe(response => {
-        this.getAllEducation()
-        this.educationService.selectEducationDto.set(null);
+        this.educationService.selectEducationDto.set(educationModel.value);
         this.toastrService.success(response.message,"Başarılı")
       })
     }

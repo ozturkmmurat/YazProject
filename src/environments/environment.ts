@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
-    apiUrl:"https://localhost:44314/api/",
-    imageFolderUrl:"https://localhost:44343/Uploads/Images/",
+    apiUrl:"https://localhost:5001/api/",
+    imageFolderUrl:"https://localhost:5001/Uploads/Images/",
     firebaseConfig: {
       apiKey: '',
       authDomain: '',
