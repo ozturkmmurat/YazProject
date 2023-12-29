@@ -8,8 +8,5 @@ import { Component, OnInit } from '@angular/core';
 /**
  * Layout Component
  */
-export class LayoutComponent implements OnInit {
-    ngOnInit(): void {
-        throw new Error('Method not implemented.');
-    }
+export class LayoutComponent {
 }

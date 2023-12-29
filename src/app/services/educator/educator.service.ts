@@ -24,12 +24,12 @@ export class EducatorService {
   }
 
   update(education : Educator):Observable<ResponseModel>{
-    let newPath = environment.apiUrl + "educators/update"
+    let newPath = environment.apiUrl + "educations/update"
     return this.httpClient.post<ResponseModel>(newPath, education)
   }
 
   delete(education : Educator):Observable<ResponseModel>{
-    let newPath = environment.apiUrl + "educators/delete"
+    let newPath = environment.apiUrl + "educations/delete"
     return this.httpClient.post<ResponseModel>(newPath, education)
   }
 }

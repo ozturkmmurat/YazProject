@@ -9,12 +9,14 @@ import { EducationCrudComponent } from "./admin/education-crud/education-crud.co
 import { EducationAddComponent } from "./admin/education-crud/education-add/education-add.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { EducationUpdateComponent } from "./admin/education-crud/education-update/education-update.component";
+import { EducationContentCrudComponent } from "./admin/education-content-crud/education-content-crud.component";
 
 @NgModule({
   declarations: [
     EducationCrudComponent,
     EducationAddComponent,
-    EducationUpdateComponent
+    EducationUpdateComponent,
+    EducationContentCrudComponent
   ],
   imports: [
     PagesRoutingModule,

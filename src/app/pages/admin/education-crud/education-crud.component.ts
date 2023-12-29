@@ -18,6 +18,7 @@ import { ModalService } from 'src/app/services/modal/modal.service';
 export class EducationCrudComponent {
   educations : SelectEducationDto[] = []
   education:Education
+  educationId : number
   modalStatus : boolean = false
 
   constructor(
@@ -49,6 +50,11 @@ export class EducationCrudComponent {
           this.modalStatus = false
         }
        });
+  }
+
+  openContentModal(content : any, educationId : number){
+    this.educationId = educationId
+    this.modalService.openXl(content).dismissed.subscribe(() => {{}})
   }
 
   loadingEducation(){

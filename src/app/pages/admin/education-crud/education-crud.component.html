@@ -24,6 +24,9 @@
       <td>
         <button type="button" class="btn btn-danger" (click)="delete(education)">Sil</button>
       </td>
+      <td>
+        <button type="button" class="btn btn-warning" (click)="openContentModal(educationContentModal, education.educationId)">Eğitim İçeriği</button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -47,6 +50,20 @@
     ></app-education-add>
     <app-education-update *ngIf="modalStatus" [education]="education">
     </app-education-update>
+  </ng-template>
+
+  <ng-template #educationContentModal let-modal>
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <app-education-content-crud [educationId]="educationId"></app-education-content-crud>
   </ng-template>
 
 

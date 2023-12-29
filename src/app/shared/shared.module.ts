@@ -5,21 +5,28 @@ import { HomeComponent } from "./home/home.component";
 import { SharedRoutingModule } from "./shared.routing.module";
 import { SharedComponent } from "./shared.component";
 import { EducationComponent } from "./education/education.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from "../account/login/login.component";
+import { RegisterComponent } from "../account/register/register.component";
 
 @NgModule({
-    declarations: [
-      HomeComponent,
-      SharedComponent,
-      EducationComponent
-    ],
-    imports: [
-      SharedRoutingModule,
-      NgbCollapseModule,
-      CommonModule,
-      NgbNavModule,
-      NgbModule,
-      NgbDropdownModule,
-    ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
-  })
-  export class SharedModule { }
+  declarations: [
+    HomeComponent,
+    SharedComponent,
+    EducationComponent,
+    LoginComponent,
+    RegisterComponent
+  ],
+  imports: [
+    SharedRoutingModule,
+    NgbCollapseModule,
+    CommonModule,
+    NgbNavModule,
+    NgbModule,
+    NgbDropdownModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class SharedModule { }
