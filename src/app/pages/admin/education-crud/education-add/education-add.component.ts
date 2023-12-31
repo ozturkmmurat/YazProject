@@ -47,7 +47,7 @@ export class EducationAddComponent {
       educatorId:[0, Validators.required],
       title:["", Validators.required],
       description:["", Validators.required],
-      type:["", Validators.required],
+      type:[0, Validators.required],
       quota:[0, Validators.required],
       dailyPrice:[0,Validators.required],
       startDate:[Validators.required],
@@ -65,7 +65,7 @@ export class EducationAddComponent {
         })
       )
       .subscribe(response => {
-        this.educationService.selectEducationDto.set(educationModel.value);
+        this.educationService._refresh.next();
         this.toastrService.success(response.message,"Başarılı")
       })
     }

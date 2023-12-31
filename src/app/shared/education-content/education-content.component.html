@@ -1,0 +1,19 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Başlık</th>
+        <th scope="col">Açıklama</th>
+        <th scope="col">Döküman İndir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let educationContent of educationContents" >
+        <td>{{educationContent.title}}</td>
+        <td>{{educationContent.description}}</td>
+        <td>
+            <button type="button" class="btn btn-info" (click)="downloadFile(filePath + educationContent.path)">İndir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

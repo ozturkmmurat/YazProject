@@ -9,21 +9,4 @@ import { EducationService } from 'src/app/services/education/education.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
-  educations : SelectEducationDto[] = []
-
-  constructor(private educationService : EducationService) {
-  }
-
-  ngOnInit(){
-    this.getAllEducation()
-  }
-
-  getAllEducation(){
-    this.educationService.getAll().subscribe(response => {
-      this.educations = response.data
-      console.log("Data", response.data)
-    })
-  }
-
 }

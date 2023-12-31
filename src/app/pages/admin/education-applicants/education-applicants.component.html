@@ -1,0 +1,31 @@
+<table class="table table-striped"  [formGroup]="_updateForm">
+    <thead>
+        <tr>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Email</th>
+            <th scope="col">Katılım Durumu</th>
+        </tr>
+    </thead>
+    <tbody  formArrayName="educationApplicants">
+            <tr *ngFor="let educationApplicant of educationApplicantArray.controls let i = index">
+                <ng-container [formGroupName]="i" *ngIf="educationApplicant">
+                    <th scope="row">{{ educationApplicant.get("firstName").value }}</th>
+                    <td>{{ educationApplicant.get("lastName").value }}</td>
+                    <td>{{ educationApplicant.get("email").value }}</td>
+                    <td>
+                        <select class="form-select" aria-label="Default select example" formControlName="status">
+                          <option value="1">Katılım Talebinde Bulundu</option>
+                          <option value="2">Eğitime Katıldı</option>
+                          <option value="3">Eğitime Katılmadı</option>
+                          <option value="4">Eğitimi İptal Et</option>
+                        </select>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-success" (click)="update(educationApplicant)">Güncelle</button>
+                      </td>
+                </ng-container>
+               
+            </tr>
+    </tbody>
+</table>

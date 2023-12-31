@@ -66,7 +66,7 @@ export class EducationUpdateComponent {
         })
       )
       .subscribe(response => {
-        this.educationService.selectEducationDto.set("");
+        this.educationService._refresh.next();
         this.toastrService.success(response.message,"Başarılı")
       })
     }

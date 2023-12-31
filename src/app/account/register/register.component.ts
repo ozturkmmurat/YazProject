@@ -1,11 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EMPTY, catchError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorService } from 'src/app/services/error/error.service';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -19,11 +21,14 @@ export class RegisterComponent {
     //Service Start
     private authService: AuthService,
     private toastrService: ToastrService,
-    private errorService : ErrorService,
+    private errorService: ErrorService,
     //Service End
 
     private formBuilder: FormBuilder,
-    private localStorageService : LocalStorageService
+    private localStorageService: LocalStorageService,
+    private userService: UserService,
+    private router: Router
+
   ) { }
 
   ngOnInit() {
@@ -39,22 +44,20 @@ export class RegisterComponent {
     })
   }
 
-  register(){
-    if(this.registerForm.valid){
+  register() {
+    if (this.registerForm.valid) {
       let registerModel = Object.assign({}, this.registerForm.value)
       this.authService.register(registerModel).pipe(
-        catchError((err : HttpErrorResponse) => {
+        catchError((err: HttpErrorResponse) => {
           this.errorService.checkError(err)
           return EMPTY
         }))
         .subscribe(response => {
-          this.localStorageService.setToken(response.data.token)
-          this.localStorageService.setTokenExpiration(response.data.expiration)
-          this.toastrService.success(response.message)
+          this.router.navigate(['login']);
+          this.toastrService.success("Kayıt İşlemi Başarılı")
         })
-    }else{
+    } else {
       this.toastrService.error("Formu eksiksiz doldurun.")
     }
   }
-
 }

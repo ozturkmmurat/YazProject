@@ -84,7 +84,7 @@ export class AuthInterceptor implements HttpInterceptor {
             if (err.status === 410) {
               this.isRefreshing = false;
               this.localStorageService.signOut();
-              this.router.navigate(["auth/login"]);
+              this.router.navigate(["login"]);
               return throwError(err);
             }
             return throwError(err);

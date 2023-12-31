@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ListResponseModel } from 'src/app/core/models/responseModel/listResponseModel';
 import { ResponseModel } from 'src/app/core/models/responseModel/responseModel';
 import { Educator } from 'src/app/models/educator/educator';
@@ -13,6 +13,9 @@ export class EducatorService {
 
   constructor(private httpClient : HttpClient) { }
 
+  _refresh = new Subject<void>();
+  refresh$ = this._refresh.asObservable();
+
   getAll():Observable<ListResponseModel<Educator>>{
     let newPath = environment.apiUrl + "educators/getAll"
     return this.httpClient.get<ListResponseModel<Educator>>(newPath)
@@ -24,12 +27,12 @@ export class EducatorService {
   }
 
   update(education : Educator):Observable<ResponseModel>{
-    let newPath = environment.apiUrl + "educations/update"
+    let newPath = environment.apiUrl + "educators/update"
     return this.httpClient.post<ResponseModel>(newPath, education)
   }
 
   delete(education : Educator):Observable<ResponseModel>{
-    let newPath = environment.apiUrl + "educations/delete"
+    let newPath = environment.apiUrl + "educators/delete"
     return this.httpClient.post<ResponseModel>(newPath, education)
   }
 }

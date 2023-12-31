@@ -1,0 +1,28 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Eğitim Adı</th>
+        <th scope="col">Eğitim Açıklaması</th>
+        <th scope="col">Eğitim Ücreti</th>
+        <th scope="col">Başlangıç Tarihi</th>
+        <th scope="col">Bitiş Tarihi</th>
+        <th scope="col">Eğitim Durumu</th>
+        <th scope="col">Eğitim İçeriği</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userEducation of userEducations">
+        <th scope="row">{{userEducation.educationTitle}}</th>
+        <td>{{userEducation.educationDescription}}</td>
+        <td>{{userEducation.dailyPrice | number : '1.2'}}</td>
+        <td>{{userEducation.startDate | date:"MM/dd/yy"}}</td>
+        <td>{{userEducation.endDate | date:"MM/dd/yy"}}</td>
+        <td><button *ngIf="userEducation.status == 1" type="button" class="btn btn-danger" (click)="update(userEducation, 4)">Eğitimi İptal Et</button>
+            <button *ngIf="userEducation.status == 2" type="button" class="btn btn-success">Eğitime Katıldı</button>
+            <button *ngIf="userEducation.status == 3" type="button" class="btn btn-info">Eğitime Katılmadı</button>
+            <button *ngIf="userEducation.status == 4" type="button" class="btn btn-primary" (click)="update(userEducation, 1)">Eğitime Tekrardan Katıl</button>
+        </td>
+        <td><a routerLink="{{'/educationContent/' + userEducation.educationId}}">Eğitim İçeriğine Git</a></td>
+      </tr>
+    </tbody>
+  </table>

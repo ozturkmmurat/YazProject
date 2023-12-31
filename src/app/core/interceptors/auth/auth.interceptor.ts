@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -20,6 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authService: AuthService,
     private localStorageService: LocalStorageService,
+    private userService : UserService,
     private toastrService: ToastrService,
     private router: Router
   ) { }
@@ -43,6 +45,7 @@ export class AuthInterceptor implements HttpInterceptor {
   
           const err = error.error.message || error.statusText;
           if (err === "Unknown Error") {
+            this.userService._user.set(null)
             this.authService.logOut();
           }
           return throwError(error);
@@ -83,6 +86,7 @@ export class AuthInterceptor implements HttpInterceptor {
           catchError((err) => {
             if (err.status === 410) {
               this.isRefreshing = false;
+              this.userService._user.set(null)
               this.localStorageService.signOut();
               this.router.navigate(["auth/login"]);
               return throwError(err);

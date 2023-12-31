@@ -26,11 +26,11 @@ export class EducationCrudComponent {
     private modalService : ModalService,
     private errorService : ErrorService,
     private toastrService : ToastrService) {
-      this.loadingEducation()
   }
 
   ngOnInit(){
     this.getAllEducation()
+    this.educationService.refresh$.subscribe(() => this.getAllEducation());
   }
 
   getAllEducation(){
@@ -55,14 +55,6 @@ export class EducationCrudComponent {
   openContentModal(content : any, educationId : number){
     this.educationId = educationId
     this.modalService.openXl(content).dismissed.subscribe(() => {{}})
-  }
-
-  loadingEducation(){
-    effect(() => {
-      if (this.educationService.selectEducationDto() !== null) {
-        this.getAllEducation();
-      }
-    });
   }
 
   add(): void {

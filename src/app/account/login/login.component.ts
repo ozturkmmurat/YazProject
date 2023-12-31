@@ -43,11 +43,11 @@ export class LoginComponent {
       let loginModel = Object.assign({}, this.loginForm.value)
       this.authService.login(loginModel).pipe(
         catchError((err: HttpErrorResponse) => {
-          console.log("Hata", err)
           this.errorService.checkError(err);
           return of();
         })
       ).subscribe(response => {
+        console.log("Login den gelen veri", response.data);
         this.localStorageService.setToken(response.data.token);
         this.localStorageService.setTokenExpiration(response.data.expiration);
         this.localStorageService.setRefreshToken(response.data.refreshToken);

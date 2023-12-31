@@ -51,6 +51,7 @@ export class AuthService {
 
   decodeToken(token: string) {
     if(token !=null){
+      console.log("Decode token", this.jwtHelper.decodeToken(token))
       return this.jwtHelper.decodeToken(token);
     }
   }

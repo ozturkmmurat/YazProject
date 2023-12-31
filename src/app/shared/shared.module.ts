@@ -8,6 +8,8 @@ import { EducationComponent } from "./education/education.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from "../account/login/login.component";
 import { RegisterComponent } from "../account/register/register.component";
+import { EducationContentComponent } from "./education-content/education-content.component";
+import { UserEducationComponent } from "./user-education/user-education.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { RegisterComponent } from "../account/register/register.component";
     SharedComponent,
     EducationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EducationContentComponent,
+    UserEducationComponent
   ],
   imports: [
     SharedRoutingModule,

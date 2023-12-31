@@ -1,0 +1,47 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Eğitmen Adı</th>
+        <th scope="col">Eğitmen Soyadı</th>
+        <th scope="col">Ünvan</th>
+        <th scope="col">Eğitim Tipi</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let educator of educators">
+        <th scope="row">{{educator.id}}</th>
+        <td>{{educator.firstName}}</td>
+        <td>{{educator.lastName}}</td>
+        <td>{{educator.title}}</td>
+        <td>{{educator.type}}</td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)="edit(educator)">Güncelle</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="delete(educator)">Sil</button>
+          </td>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-success" (click)="add()">Eğitmen Oluştur</button>
+
+
+  <ng-template #educatorModal let-modal>
+    <div class="modal-header">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <app-educator-add *ngIf="!modalStatus"></app-educator-add>
+    <app-educator-update *ngIf="modalStatus" [educator]="educator"></app-educator-update>
+  </ng-template>

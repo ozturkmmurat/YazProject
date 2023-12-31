@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class EducationContentService {
 
+
   constructor(private httpClient : HttpClient) { }
 
   selectEducationContentDto = signal(null);

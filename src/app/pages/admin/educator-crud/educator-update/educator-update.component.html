@@ -1,0 +1,42 @@
+<div class="modal-body">
+    <div class="mb-3">
+        <div class="form-group">
+            <form [formGroup]="_updateForm">
+                <div class="col-lg-12">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>Eğitmen Adı</label>
+                                        <input type="text" class="form-control" placeholder="Eğitmen Ad" formControlName="firstName">
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>Eğitmen Soyadı</label>
+                                        <input type="text" class="form-control" placeholder="Eğitmen Soyad" formControlName="lastName">
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <label>Eğitmen Ünvanı</label>
+                                        <input type="text" class="form-control" placeholder="Eğitmen Ünvan" formControlName="title">
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <label for="inputState">Eğitmen</label>
+                                        <select id="electronicId" name="electronicId" class="form-control" formControlName="type">
+                                            <option value="Dış Eğitmen">
+                                                Dış Eğitmen
+                                            </option>
+                                            <option value="İç Eğitmen">
+                                                İç Eğitmen
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-success mt-3" (click)="update()">Güncelle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
